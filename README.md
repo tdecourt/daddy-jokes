@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+# Daddy Jokes
+Auteur : [Thomas Decourty](https://github.com/tdecourt)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Description :
+Un site internet utilisant [JokeAPI](https://sv443.net/jokeapi/v2/), permettant de découvrir de nouvelles blagues, d'en partager et de connaitre sont type d'humour préféré.
 
-## Available Scripts
+#### Avancement:
+Ce projet est actuellement en développement.
 
-In the project directory, you can run:
+## Installation and Setup Instructions
 
-### `npm start`
+### Pré-requis
+- `npm` doit être installé sur votre machine afin de lancer et/ou tester le projet.
+- Téléchargez le projet ou clonez-le avec l'outil `git`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Procédure
+- Placez-vous à la racine du projet.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Installation des dépendances : 
+```
+npm install
+```
+- Lancer les tests :
+```
+npm test
+``` 
+- Démarrer le serveur :
+```
+npm start
+``` 
+- Le serveur tourne (par défaut) sur le port 3000 en local *(n'hésitez pas à jeter un œuil dans votre console si le port est bien 3000)* : [**localhost:3000**](http://localhost:3000)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Objectifs et contexte du projet
+- Ce projet est la suite de [Punk React App](https://github.com/tdecourt/Punk-React-App) dans le sens où ils visent tous les deux à s'exercer dans l'**utilisation d'une API pour un site internet**.
+- Introduction à `typescript`, `jest` et `testing-library`.
+- Finalisation du projet fil rouge *(revenir sur Fuse et React-query, améliorer l’expérience, …)*
+- *Facultatif: Créer un **Context** permettant de changer le langage de l’interface*
