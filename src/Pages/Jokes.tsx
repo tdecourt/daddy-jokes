@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import Fade from 'react-bootstrap/Fade';
 
 const Jokes = () => {
 	enum JokeCategory {
@@ -46,41 +48,59 @@ const Jokes = () => {
 		safe: boolean,
 		lang: JokeLang
 	}
+	const [open, setOpen] = useState(false);
 	const [joke, setJoke] = useState<Joke>()
-	const [jokeCategory, setJokeCategory] = useState<JokeCategory>(JokeCategory.ANY)
-	const [jokeLang, setJokeLang] = useState<JokeLang>(JokeLang.FRA)
+	const [jokeCategory, setJokeCategory] = useState<JokeCategory>(JokeCategory.DARK)
+	const [jokeLang, setJokeLang] = useState<JokeLang>(JokeLang.EN)
 	const [jokeFlags, setJokesFlags] = useState<Array<JokeFlagName>>([])
-	const [jokeTypes, setJokesTypes] = useState<Array<JokeType>>([])
+	const [jokeTypes, setJokesTypes] = useState<Array<JokeType>>([JokeType.SINGLE, JokeType.TWO_PART])
 
 	const getJoke = (id?: number) => {
-		const baseURL = "https://v2.jokeapi.dev/joke/"
-		const query = baseURL + jokeCategory + "?lang=" + jokeLang
+		const baseURL: string = "https://v2.jokeapi.dev/joke/"
+		let query: string = ""
+
+		if (jokeLang != JokeLang.EN) query += "&lang=" + jokeLang
+		if (jokeFlags.length != 0) {
+			query += "&blacklistFlags="
+			jokeFlags.forEach(flag => query += flag + ",")
+			query = query.slice(0, -1)
+		}
+		if (jokeTypes.length == 1) query += "&type=" + jokeTypes.at(0)
+
+		query = baseURL + jokeCategory + ((query.length != 0) ? "?" + query.substring(1) : "")
+		console.log(query);
 		fetch(query)
 			.then<Joke>(res => res.json())
-			.then(data => setJoke(data))
+			.then(data => { setJoke(data); setOpen(false); })
 	}
 
 	useEffect(getJoke, [])
 
 	return (
-		<div>
-			<div className="px-4 py-5 my-5 text-center">
-				<div className="col-lg-6 mx-auto">
-					{
-						(joke?.type == JokeType.TWO_PART) ?
-							<div className="lead mb-4">
-								<p>{joke?.setup}</p>
+		<div className="px-4 py-5 my-5 text-center">
+			<form className="bg-dark w-100">
+
+			</form>
+			<div className="col-lg-6 mx-auto">
+				{
+					(joke?.type == JokeType.TWO_PART) ?
+						<div className="lead mb-4">
+							<p>{joke?.setup}</p>
+							<Fade in={open}>
 								<p>{joke?.delivery}</p>
-							</div>
-							:
-							<div className="lead mb-4">
-								<p>{joke?.joke}</p>
-							</div>
-					}
-					<div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-						<button onClick={evt => getJoke()} type="button" className="btn btn-primary btn-lg px-4 gap-3">Yup</button>
-						<button onClick={evt => getJoke()} type="button" className="btn btn-outline-secondary btn-lg px-4">Nope</button>
-					</div>
+							</Fade>
+							<Fade in={!open}>
+								<Button onClick={() => setOpen(true)}>Réponse</Button>
+							</Fade>
+						</div>
+						:
+						<div className="lead mb-4">
+							<p>{joke?.joke}</p>
+						</div>
+				}
+				<div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
+					<button onClick={evt => getJoke()} type="button" className="btn btn-success btn-lg px-4 gap-3">Yup</button>
+					<button onClick={evt => getJoke()} type="button" className="btn btn-secondary btn-lg px-4">Nope</button>
 				</div>
 			</div>
 		</div>
