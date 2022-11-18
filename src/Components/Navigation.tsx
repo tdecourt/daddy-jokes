@@ -4,11 +4,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 const Navigation = () => {
-    
+
 	return (
-		<Navbar bg="light" expand="lg">
+		<Navbar bg="dark" variant="dark" expand="lg">
 			<Container>
-				<Navbar.Brand href="/">Jokes de darons</Navbar.Brand>
+				<Navbar.Brand href="/">😂 Jokes de darons</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
