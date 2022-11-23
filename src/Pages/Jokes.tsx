@@ -73,15 +73,31 @@ const Jokes = () => {
 	const [show, setShow] = useState(true); // Show filters ============================== DEBUG ==============================
 	const handleClose = () => { setShow(false); getJoke() }
 	const handleShow = () => setShow(true)
-	const toggleFlag = (flag: JokeFlagName) => {
-		if (jokeFlags.includes(flag)) setJokesFlags(jokeFlags.filter(jokeFlag => jokeFlag !== flag))
-		else setJokesFlags(jokeFlags.concat(flag))
-	}
-	const toggleType = (type: JokeType) => {
-		if (jokeTypes.includes(type)) setJokesTypes(jokeTypes.filter(jokeType => jokeType !== type))
-		else setJokesTypes(jokeTypes.concat(type))
-	}
 
+	const displayFilter = (
+		title: string,
+		filters: object,
+		activer: (item: any) => boolean,
+		clicker: (item: any) => void
+	): React.ReactElement | null => {
+		return <ButtonGroup vertical className="mb-4 me-4" aria-label={title}>
+			<span>{title} :</span>
+			{
+				Object.values(filters)
+					.map(item =>
+						<Button key={item}
+							active={activer(item)}
+							onClick={evt => clicker(item)}>
+							{item}
+						</Button>
+					)
+			}
+		</ButtonGroup>
+	}
+	function toggler<T>(item: T, tab: Array<T>, setter: (value: T[]) => void): void {
+		if (tab.includes(item)) setter(tab.filter(tabItem => tabItem !== item))
+		else setter(tab.concat(item))
+	}
 
 	useEffect(getJoke, [])
 
@@ -118,58 +134,38 @@ const Jokes = () => {
 				</Offcanvas.Header>
 				<Offcanvas.Body>
 					<ButtonToolbar className="d-flex flex-row flex-wrap" aria-label="Filters">
-						<ButtonGroup vertical className="mb-4 me-4" aria-label="First group">
-							<span>Category :</span>
-							{
-								Object.values(JokeCategory)
-									.map(categorie =>
-										<Button id={categorie}
-											active={(jokeCategory === categorie)}
-											onClick={() => setJokeCategory(categorie)}>
-											{categorie}
-										</Button>
-									)
-							}
-						</ButtonGroup>
-						<ButtonGroup vertical className="mb-4 me-4" aria-label="Second group">
-							<span>Flags :</span>
-							{
-								Object.values(JokeFlagName)
-									.map(flag =>
-										<Button id={flag}
-											active={(jokeFlags.includes(flag))}
-											onClick={() => toggleFlag(flag)}>
-											{flag}
-										</Button>
-									)
-							}
-						</ButtonGroup>
-						<ButtonGroup vertical className="mb-4 me-4" aria-label="Second group">
-							<span>Type :</span>
-							{
-								Object.values(JokeType)
-									.map(type =>
-										<Button id={type}
-											active={(jokeTypes.includes(type))}
-											onClick={() => toggleType(type)}>
-											{type}
-										</Button>
-									)
-							}
-						</ButtonGroup>
-						<ButtonGroup vertical className="mb-4 me-4" aria-label="Second group">
-							<span>Language :</span>
-							{
-								Object.values(JokeLang)
-									.map(lang =>
-										<Button id={lang}
-											active={(jokeLang === lang)}
-											onClick={() => setJokeLang(lang)}>
-											{lang}
-										</Button>
-									)
-							}
-						</ButtonGroup>
+						{
+							displayFilter(
+								"Category",
+								JokeCategory,
+								category => jokeCategory === category,
+								category => setJokeCategory(category)
+							)
+						}
+						{
+							displayFilter(
+								"Flags",
+								JokeFlagName,
+								(flag: JokeFlagName) => (jokeFlags.includes(flag)),
+								(flag: JokeFlagName) => toggler<JokeFlagName>(flag, jokeFlags, setJokesFlags)
+							)
+						}
+						{
+							displayFilter(
+								"Type",
+								JokeType,
+								(type: JokeType) => (jokeTypes.includes(type)),
+								(type: JokeType) => toggler<JokeType>(type, jokeTypes, setJokesTypes)
+							)
+						}
+						{
+							displayFilter(
+								"Language",
+								JokeLang,
+								lang => jokeLang === lang,
+								lang => setJokeLang(lang)
+							)
+						}
 					</ButtonToolbar>
 				</Offcanvas.Body>
 			</Offcanvas>
