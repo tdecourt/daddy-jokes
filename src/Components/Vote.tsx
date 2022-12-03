@@ -4,7 +4,13 @@ import { useDispatch } from 'react-redux';
 import { voteJoke } from '../feature/jokes.slice';
 import { Joke } from '../Model';
 
-const Vote = ({ handleClick, joke, className, style }: { handleClick?: () => void, joke?: Joke, className?: string, style?: any }) => {
+const Vote = (
+	{ handleClick, joke, className, style }: {
+		handleClick?: (evt?: Event) => void,
+		joke?: Joke,
+		className?: string,
+		style?: any
+	}) => {
 	const dispatch = useDispatch();
 
 	return (

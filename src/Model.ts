@@ -28,12 +28,13 @@ export enum JokeFlagName {
 }
 
 export type Joke = {
+	id: number,
 	error: boolean,
-	category: JokeCategory,
-	type: JokeType,
 	joke?: string,
 	setup?: string,
 	delivery?: string,
+	category: JokeCategory,
+	type: JokeType,
 	flags: {
 		nsfw: boolean,
 		religious: boolean,
@@ -42,7 +43,6 @@ export type Joke = {
 		sexist: boolean,
 		explicit: boolean
 	},
-	id: number,
 	safe: boolean,
 	lang: JokeLang
 }

@@ -1,46 +1,51 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Fade } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { Button, Card, Collapse } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
-import { setNewJoke } from '../feature/jokes.slice';
 import { Joke, JokeType } from '../Model';
 import Vote from './Vote';
 
-const JokeComponent = () => {
-	const dispatch = useDispatch();
-	const joke = useSelector<RootState, Joke>((state) => state.jokes.newJoke)
-	const [jokeSecondPart, setJokeSecondPart] = useState(false);
-
-	const getNewJoke = () => {
-		const baseURL: string = "https://v2.jokeapi.dev/joke/"
-		let query: string = baseURL + "Any"
-		fetch(query)
-			.then<Joke>(res => res.json())
-			.then(data => dispatch(setNewJoke(data)))
+const JokeComponent = (
+	{ joke, voteValue, style, openedDelivery, onVote }: {
+		joke?: Joke,
+		voteValue?: boolean,
+		style?: React.CSSProperties,
+		openedDelivery?: boolean,
+		onVote?: (evt?: Event) => void
 	}
+) => {
+	const newJoke = useSelector<RootState, Joke>((state) => state.jokes.newJoke);
+	const curJoke: Joke = (joke !== undefined) ? joke : newJoke;
+	const [jokeDelivery, setJokeDelivery] = useState(openedDelivery);
 
-	useEffect(getNewJoke, [])
+	useEffect(() => setJokeDelivery(false), [curJoke])
 
 	return (
-		<div className="py-5 my-5 text-center col-lg-6 mx-auto">
+		<Card
+			key={curJoke.id}
+			className='d-flex flex-column mt-3 me-2'
+			style={(style !== undefined) ? style : { width: "300px", height: "250px" }}
+		>
 			{
-				(joke?.type === JokeType.TWO_PART) ?
-					<div className="lead mb-4">
-						<p>{joke?.setup}</p>
-						<Fade in={jokeSecondPart}>
-							<p>{joke?.delivery}</p>
-						</Fade>
-						<Fade in={!jokeSecondPart}>
-							<Button onClick={() => setJokeSecondPart(true)}>Response</Button>
-						</Fade>
-					</div>
+				(curJoke.type === JokeType.TWO_PART) ?
+					<Card.Body className='overflow-auto'>
+						<Card.Text>{curJoke.setup}</Card.Text>
+						<Collapse in={jokeDelivery}>
+							<Card.Text>{curJoke.delivery}</Card.Text>
+						</Collapse>
+						<Collapse in={!jokeDelivery}>
+							<Button onClick={() => setJokeDelivery(true)}>Delivery</Button>
+						</Collapse>
+					</Card.Body>
 					:
-					<div className="lead mb-4">
-						<p>{joke?.joke}</p>
-					</div>
+					<Card.Body className='overflow-auto'>
+						<Card.Text>{curJoke.joke}</Card.Text>
+					</Card.Body>
 			}
-			<Vote className="w-100" style={{ maxWidth: "300px" }} handleClick={getNewJoke} />
-		</div>
+			<Card.Footer className={(voteValue !== undefined) ? `bg-${(voteValue) ? 'success' : 'secondary'}` : ''}>
+				<Vote style={{ width: "100%" }} joke={curJoke} handleClick={onVote} />
+			</Card.Footer>
+		</Card>
 	);
 };
 
