@@ -27,7 +27,7 @@ const Footer = () => {
 						</a>
 					</li>
 					<li>
-						<a href="https://sv443.net/jokeapi/v2/">
+						<a href="https://v2.jokeapi.dev/">
 							Jokes API
 						</a>
 					</li>
