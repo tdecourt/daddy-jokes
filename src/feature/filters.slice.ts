@@ -7,7 +7,7 @@ export const filtersSlice = createSlice({
 		category: JokeCategory.ANY as JokeCategory,
 		flags: new Array<JokeFlagName>(),
 		types: new Array<JokeType>(),
-		lang: JokeLang.EN as JokeLang,
+		lang: JokeLang.FRA as JokeLang,
 	},
 	reducers: {
 		setCategory: (state, { payload }: PayloadAction<JokeCategory>) => {

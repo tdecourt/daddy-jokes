@@ -44,12 +44,6 @@ const Filters = () => {
 							isActive={(payload: JokeType) => typesValues.includes(payload)}
 							handleClick={(payload: JokeType) => toggleType(payload)}
 						/>
-						<Filter
-							title="Language"
-							values={jokeLangValues}
-							isActive={(payload: JokeLang) => payload === langValue}
-							handleClick={(payload: JokeLang) => setLang(payload)}
-						/>
 					</ButtonToolbar>
 				</Offcanvas.Body>
 			</Offcanvas>

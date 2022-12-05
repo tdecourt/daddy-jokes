@@ -28,7 +28,7 @@ const Jokes = () => {
 	return (
 		<div className="d-flex justify-content-center px-4 mt-4 position-relative">
 			<Filters />
-			<JokeComponent className='mt-5' style={{ minWidth: "50%", maxWidth: "600px", minHeight: "200px" }} onVote={getNewJoke} />
+			<JokeComponent className='mt-5 mb-5' style={{ minWidth: "50%", maxWidth: "600px", minHeight: "200px" }} onVote={getNewJoke} />
 		</div>
 	);
 };
