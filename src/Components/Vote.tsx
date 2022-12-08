@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
+import { useTranslation } from 'react-multi-lang';
 import { useDispatch } from 'react-redux';
 import { voteJoke } from '../feature/jokes.slice';
 import { Joke } from '../Model';
@@ -13,6 +14,7 @@ const Vote = (
 		disabled?: boolean
 	}) => {
 	const dispatch = useDispatch();
+	const translation = useTranslation("joke.vote")
 
 	return (
 		<ButtonGroup
@@ -20,8 +22,8 @@ const Vote = (
 			style={style}
 			onClick={evt => { if (handleClick !== undefined) handleClick() }}
 		>
-			<Button variant="success" disabled={disabled} onClick={evt => dispatch(voteJoke({ vote: true, joke: joke }))}>Yup</Button>
-			<Button variant="secondary" disabled={disabled} onClick={evt => dispatch(voteJoke({ vote: false, joke: joke }))}>Nope</Button>
+			<Button variant="success" disabled={disabled} onClick={evt => dispatch(voteJoke({ vote: true, joke: joke }))}>{translation("Yes")}</Button>
+			<Button variant="secondary" disabled={disabled} onClick={evt => dispatch(voteJoke({ vote: false, joke: joke }))}>{translation("No")}</Button>
 		</ButtonGroup>
 	);
 };

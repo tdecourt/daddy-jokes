@@ -1,0 +1,50 @@
+{
+	"title": "Daddy Jokes",
+	"pages": {
+		"Home": "Home",
+		"Jokes": "Jokes",
+		"MyJokes": "My Jokes",
+		"About": "About"
+	},
+	"filter": {
+		"Category": {
+			"title": "Category",
+			"Any": "Any",
+			"Programming": "Programming",
+			"Miscellaneous": "Miscellaneous",
+			"Dark": "Dark",
+			"Pun": "Pun",
+			"Spooky": "Spooky",
+			"Christmas": "Christmas"
+		},
+		"Type": {
+			"title": "Flags",
+			"single": "Single",
+			"twopart": "Two parts"
+		},
+		"Flag": {
+			"title": "Type",
+			"nsfw": "nsfw",
+			"religious": "religious",
+			"political": "political",
+			"racist": "racist",
+			"sexist": "sexist",
+			"explicit": "explicit"
+		}
+	},
+	"joke": {
+		"delivery": "Delivery",
+		"vote": {
+			"Yes": "Lol !",
+			"No": "Meh !"
+		}
+	},
+	"footer": {
+		"siteMap": "Sitemap",
+		"Resources": {
+			"title": "Resources",
+			"Code": "Project Code",
+			"API": "Jokes API"
+		}
+	}
+}
