@@ -5,7 +5,7 @@ export enum JokeCategory {
 	DARK = 'Dark',
 	PUN = 'Pun',
 	SPOOKY = 'Spooky',
-	CHRISTMASS = 'Christmass'
+	CHRISTMAS = 'Christmas'
 }
 export const jokeCategoryValues: JokeCategory[] = [
 	JokeCategory.ANY,
@@ -14,7 +14,7 @@ export const jokeCategoryValues: JokeCategory[] = [
 	JokeCategory.DARK,
 	JokeCategory.PUN,
 	JokeCategory.SPOOKY,
-	JokeCategory.CHRISTMASS
+	JokeCategory.CHRISTMAS
 ]
 
 export enum JokeType {

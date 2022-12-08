@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Button, ButtonToolbar, Offcanvas } from 'react-bootstrap';
+import { useTranslation } from 'react-multi-lang';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
 import { setCategory, setLang, toggleFlag, toggleType } from '../feature/filters.slice';
-import { JokeCategory, jokeCategoryValues, JokeFlagName, jokeFlagNameValues, JokeLang, jokeLangValues, JokeType, jokeTypeValues } from '../Model';
+import { JokeCategory, jokeCategoryValues, JokeFlagName, jokeFlagNameValues, JokeType, jokeTypeValues } from '../Model';
 import Filter from './Filter';
 
 const Filters = () => {
@@ -13,7 +14,6 @@ const Filters = () => {
 	const categoryValue = useSelector<RootState, JokeCategory>(state => state.filters.category)
 	const flagsValues = useSelector<RootState, JokeFlagName[]>(state => state.filters.flags)
 	const typesValues = useSelector<RootState, JokeType[]>(state => state.filters.types)
-	const langValue = useSelector<RootState, JokeLang>(state => state.filters.lang)
 
 	return (
 		<div className="position-absolute top-0 start-0">
@@ -31,24 +31,21 @@ const Filters = () => {
 							values={jokeCategoryValues}
 							isActive={(payload: JokeCategory) => payload === categoryValue}
 							handleClick={(payload: JokeCategory) => setCategory(payload)}
+							translation={useTranslation("filter.Category")}
 						/>
 						<Filter
 							title="Flags"
 							values={jokeFlagNameValues}
 							isActive={(payload: JokeFlagName) => flagsValues.includes(payload)}
 							handleClick={(payload: JokeFlagName) => toggleFlag(payload)}
+							translation={useTranslation("filter.Flag")}
 						/>
 						<Filter
 							title="Type"
 							values={jokeTypeValues}
 							isActive={(payload: JokeType) => typesValues.includes(payload)}
 							handleClick={(payload: JokeType) => toggleType(payload)}
-						/>
-						<Filter
-							title="Language"
-							values={jokeLangValues}
-							isActive={(payload: JokeLang) => payload === langValue}
-							handleClick={(payload: JokeLang) => setLang(payload)}
+							translation={useTranslation("filter.Type")}
 						/>
 					</ButtonToolbar>
 				</Offcanvas.Body>

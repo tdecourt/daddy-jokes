@@ -1,0 +1,50 @@
+{
+	"title": "Jokes de darons",
+	"pages": {
+		"Home": "Accueil",
+		"Jokes": "Blagues",
+		"MyJokes": "Mes Blagues",
+		"About": "À Propos"
+	},
+	"filter": {
+		"Category": {
+			"title": "Catégorie",
+			"Any": "Tout",
+			"Programming": "Programation",
+			"Miscellaneous": "Divers",
+			"Dark": "Humour Noir",
+			"Pun": "Jeux de mots",
+			"Spooky": "Sinistre",
+			"Christmas": "Noël"
+		},
+		"Type": {
+			"title": "Liste Noir",
+			"single": "Simple",
+			"twopart": "Double partie"
+		},
+		"Flag": {
+			"title": "Type",
+			"nsfw": "nsfw",
+			"religious": "religion",
+			"political": "politique",
+			"racist": "racisme",
+			"sexist": "sexisme",
+			"explicit": "explicite"
+		}
+	},
+	"joke": {
+		"delivery": "Chute",
+		"vote": {
+			"Yes": "MDR !",
+			"No": "Meh !"
+		}
+	},
+	"footer": {
+		"siteMap": "Plan du site",
+		"Resources": {
+			"title": "Ressources",
+			"Code": "Code du projet",
+			"API": "Jokes API"
+		}
+	}
+}

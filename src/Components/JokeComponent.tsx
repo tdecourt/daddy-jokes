@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Collapse } from 'react-bootstrap';
+import { useTranslation } from 'react-multi-lang';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
 import { Joke, JokeType } from '../Model';
@@ -19,6 +20,7 @@ const JokeComponent = (
 	const newJoke = useSelector<RootState, Joke>((state) => state.jokes.newJoke);
 	const curJoke: Joke = (joke !== undefined) ? joke : newJoke;
 	const [jokeDelivery, setJokeDelivery] = useState(openedDelivery);
+	const translation = useTranslation("joke");
 
 	useEffect(() => setJokeDelivery(false), [curJoke])
 
@@ -38,7 +40,7 @@ const JokeComponent = (
 							<Card.Text>{curJoke.delivery}</Card.Text>
 						</Collapse>
 						<Collapse in={!jokeDelivery}>
-							<Button onClick={() => setJokeDelivery(true)}>Delivery</Button>
+							<Button onClick={() => setJokeDelivery(true)}>{translation("delivery")}</Button>
 						</Collapse>
 					</Card.Body>
 					:

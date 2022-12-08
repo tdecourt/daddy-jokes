@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import { Joke } from '../Model';
 import Vote from './Vote';
 
 const ErrorCard = ({ message, className }: {

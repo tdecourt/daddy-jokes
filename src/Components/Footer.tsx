@@ -1,34 +1,38 @@
 import React from "react";
+import { useTranslation } from "react-multi-lang";
 import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
+	const translation = useTranslation("footer");
+	const navTranslation = useTranslation("pages");
+
 	return (
 		<footer className='footer mt-auto py-3 bg-light d-flex justify-content-evenly'>
 			<div>
-				<h3>Plan du site</h3>
+				<h3>{translation("siteMap")}</h3>
 				<ul>
 					<li>
-						<NavLink to="/">Jokes</NavLink>
+						<NavLink to="/">{navTranslation("Home")}</NavLink>
 					</li>
 					<li>
-						<NavLink to="/jokes">Mes Jokes</NavLink>
+						<NavLink to="/jokes">{navTranslation("MyJokes")}</NavLink>
 					</li>
 					<li>
-						<NavLink to="/about">À propos</NavLink>
+						<NavLink to="/about">{navTranslation("About")}</NavLink>
 					</li>
 				</ul>
 			</div>
 			<div>
-				<h3>Ressources</h3>
+				<h3>{translation("Resources.title")}</h3>
 				<ul>
 					<li>
 						<a href="https://github.com/tdecourt/daddy-jokes">
-							Code du projet
+							{translation("Resources.Code")}
 						</a>
 					</li>
 					<li>
 						<a href="https://v2.jokeapi.dev/">
-							Jokes API
+							{translation("Resources.API")}
 						</a>
 					</li>
 				</ul>
