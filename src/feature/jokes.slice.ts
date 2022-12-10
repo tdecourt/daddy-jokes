@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Joke } from "../Model";
+import { Joke, VotedJoke } from "../Model";
 
 export const jokesSlice = createSlice({
 	name: "jokes",
 	initialState: {
 		newJoke: <Joke>{},
-		votedJokes: new Array<{ joke: Joke, vote: boolean }>()
+		votedJokes: new Array<VotedJoke>()
 	},
 	reducers: {
 		setNewJoke: (state, { payload }: PayloadAction<Joke>) => {

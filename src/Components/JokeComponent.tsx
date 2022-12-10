@@ -24,7 +24,7 @@ const JokeComponent = (
 
 	useEffect(() => setJokeDelivery(false), [curJoke])
 
-	if (newJoke.error) return (<ErrorCard className={'d-flex flex-column mt-3 me-2 ' + className} key={curJoke.id} message={curJoke.message} />)
+	if (curJoke.error) return (<ErrorCard className={'d-flex flex-column mt-3 me-2 ' + className} key={curJoke.id} message={curJoke.message} />)
 
 	return (
 		<Card
