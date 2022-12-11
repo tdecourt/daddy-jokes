@@ -37,7 +37,8 @@
 		"vote": {
 			"Yes": "MDR !",
 			"No": "Meh !"
-		}
+		},
+		"delete": "supprimer"
 	},
 	"footer": {
 		"siteMap": "Plan du site",

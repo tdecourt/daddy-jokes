@@ -37,7 +37,8 @@
 		"vote": {
 			"Yes": "Lol !",
 			"No": "Meh !"
-		}
+		},
+		"delete": "delete"
 	},
 	"footer": {
 		"siteMap": "Sitemap",

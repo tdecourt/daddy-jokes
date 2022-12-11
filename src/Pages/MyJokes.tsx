@@ -13,7 +13,7 @@ const MyJokes = () => {
 			<Statistics />
 			<div className='d-flex flex-wrap justify-content-around'>
 				{jokes.map(item =>
-					<JokeComponent key={item.joke.id} joke={item.joke} voteValue={item.vote} openedDelivery />
+					<JokeComponent key={item.joke.id} joke={item.joke} voteValue={item.vote} deletable />
 				)}
 			</div>
 		</>
