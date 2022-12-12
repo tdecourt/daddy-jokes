@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Joke } from "../Model";
+import { Joke, VotedJoke } from "../Model";
 
 export const jokesSlice = createSlice({
 	name: "jokes",
 	initialState: {
 		newJoke: <Joke>{},
-		votedJokes: new Array<{ joke: Joke, vote: boolean }>()
+		votedJokes: new Array<VotedJoke>()
 	},
 	reducers: {
 		setNewJoke: (state, { payload }: PayloadAction<Joke>) => {
@@ -17,9 +17,13 @@ export const jokesSlice = createSlice({
 				.filter(({ joke }) => joke.id !== votedJoke.id)
 			state.votedJokes.push({ joke: votedJoke, vote: payload.vote })
 			state.votedJokes.sort((a, b) => a.joke.id - b.joke.id)
+		},
+		unvoteJoke: (state, { payload }: PayloadAction<Joke>) => {
+			state.votedJokes = state.votedJokes
+				.filter(({ joke }) => joke.id !== payload.id)
 		}
 	}
 });
 
-export const { setNewJoke, voteJoke } = jokesSlice.actions;
+export const { setNewJoke, voteJoke, unvoteJoke } = jokesSlice.actions;
 export default jokesSlice.reducer;

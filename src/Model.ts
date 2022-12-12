@@ -1,7 +1,7 @@
 export enum JokeCategory {
 	ANY = 'Any',
 	PROGRAMMING = 'Programming',
-	MISC = 'Miscellaneous',
+	MISC = 'Misc',
 	DARK = 'Dark',
 	PUN = 'Pun',
 	SPOOKY = 'Spooky',
@@ -81,4 +81,9 @@ export type Joke = {
 	},
 	safe: boolean,
 	lang: JokeLang
+}
+
+export type VotedJoke = {
+	joke: Joke,
+	vote: boolean
 }
