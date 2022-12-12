@@ -1,5 +1,6 @@
 {
 	"title": "Daddy Jokes",
+	"licence": "MIT Licence",
 	"pages": {
 		"Home": "Home",
 		"Jokes": "Jokes",
@@ -39,6 +40,14 @@
 			"No": "Meh !"
 		},
 		"delete": "delete"
+	},
+	"about": {
+		"title": "About {name}",
+		"main0": "This website was created by ", 
+		"main1": ", as part of a red line project for the ",
+		"second0": "This website use ",
+		"second1": ". The application source code is available on ",
+		"second2": " under "
 	},
 	"footer": {
 		"siteMap": "Sitemap",
