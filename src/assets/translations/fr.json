@@ -43,9 +43,9 @@
 	},
 	"about": {
 		"title": "À propos de {name}",
-		"main0": "Ce site à été créé par ", 
+		"main0": "Ce site à été créé par ",
 		"main1": ", dans le cadre d'un projet file rouge pour l'",
-		"second0": "Ce site utilise l'",
+		"second0": "Ce site utilise la ",
 		"second1": ". Le code source de l'application est disponible sur ",
 		"second2": " sous "
 	},

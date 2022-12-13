@@ -32,6 +32,6 @@ npm start
 
 ## Objectifs et contexte du projet
 - Ce projet est la suite de [Punk React App](https://github.com/tdecourt/Punk-React-App) dans le sens où ils visent tous les deux à s'exercer dans l'**utilisation d'une API pour un site internet**.
-- Introduction à `typescript`, `jest` et `testing-library`.
+- *Facultatif: Introduction à `typescript`, `jest` et `testing-library`.*
 - Finalisation du projet fil rouge *(revenir sur Fuse et React-query, améliorer l’expérience, …)*
 - *Facultatif: Créer un **Context** permettant de changer le langage de l’interface*
