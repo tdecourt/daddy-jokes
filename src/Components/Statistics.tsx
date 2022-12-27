@@ -7,6 +7,7 @@ import { VotedJoke, JokeCategory, jokeCategoryValues } from '../Model';
 
 
 const Statistics = () => {
+	const rootTranslation = useTranslation();
 	const categoryTranslation = useTranslation("filter.Category");
 	const voteTranslation = useTranslation("joke.vote");
 	const jokes: VotedJoke[] = useSelector<RootState, VotedJoke[]>(state => state.jokes.votedJokes);
@@ -43,9 +44,9 @@ const Statistics = () => {
 
 	return (
 		<div className="d-flex justify-content-around align-items-center mt-3 mx-5 w-auto">
-			<BarChart data={getData()} width={700} height={250} >
+			<BarChart data={getData()} width={750} height={250} >
 				<XAxis dataKey="name" />
-				<YAxis label={{ value: 'Nombre', angle: -90, position: 'insideLeft' }} />
+				<YAxis label={{ value: rootTranslation("statistics.number"), angle: -90, position: 'insideLeft' }} />
 				<Tooltip />
 				<Legend />
 				<Bar name={voteTranslation("No")} dataKey="votes.downvote" stackId="a" fill="#5c636a" />
